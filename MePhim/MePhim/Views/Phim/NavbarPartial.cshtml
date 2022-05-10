@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<MePhim.Models.PHIM>
+<nav class="navbar navbar-inverse" style="background-color:transparent  ;display:flex;justify-content:center; position:relative">
+    <!--navbar-fixed-top-->
+   
+    
+    <div style="width:100%;margin-left:50px">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1" aria-expanded="false">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+           
+            <a class="navbar-brand" href="@Url.Action("Index", "Phim")" style="margin-top:-15px">
+                <img src="~/Images/logo.jpg" />
+            </a>
+            
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar1" style="width:114%">
+            <ul class="nav navbar-nav">
+                <li><a href="@Url.Action("Index","Phim")" style="color:#fff;font-weight:600">TRANG CHỦ</a> </li>
+                <li><a href="@Url.Action("PhimCR","Phim")" style="color:#fff; font-weight:600">PHIM CHIẾU RAP</a> </li>
+                <li><a href="@Url.Action("PhimHay","Phim")" style="color:#fff;font-weight:600">PHIM HAY</a> </li>
+                <li><a href="@Url.Action("PhimLe","Phim")" style="color:#fff;font-weight:600">PHIM LẺ</a></li>
+                <li><a href="@Url.Action("PhimBo","Phim")" style="color:#fff;font-weight:600">PHIM BỘ</a></li>
+                <li>
+                    @using (Html.BeginForm("Search", "Search", FormMethod.Get, new { @class = "navbar-form navbar-left", @role = "search" }))
+                    {
+                        <div style="display:flex;margin-right:100px;">
+                            <div class="form-group" style="width:150px;margin-top:1px ;display:flex">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm" name="strSearch" style="width:200px">
+                                <button type="submit" class="btn btn-default" style="background-color:darkgray;color:#fff;">Tìm</button>
+                            </div>
+
+                        </div>
+                    }
+
+                </li>
+                <ul class="nav navbar-nav">
+
+                    <li style="width:0">@Html.Action("LoginPartial", "User")</li>
+
+                </ul>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-->
+</nav>
+

@@ -1,0 +1,89 @@
+﻿@model MePhim.Models.PHIM
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style type="text/css">
+    igm {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    h3, h4 {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+<h2 style="color:#ffce54">XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+
+<h3>Bạn quyết định xóa phim này?</h3>
+<h4>@Html.Raw(ViewBag.ThongBao)</h4>
+<div style="color:#ffce54">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Phim:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhim)
+        </dd>
+
+        <dt>
+            Mô Tả:
+        </dt>
+
+        <dd>
+            @Html.Raw(@Model.MoTa.ToString().Replace("\n", "<br>"))
+        </dd>
+
+        <dt>
+            Ảnh Bìa:
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Model.AnhBia" alt="@Model.TenPhim">
+        </dd>
+
+        <dt>
+            Ngày Cập Nhật:
+        </dt>
+
+        <dd>
+            @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")
+        </dd>
+
+
+        <dt>
+            Thể Loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THELOAI.TenTheLoai)
+        </dd>
+
+        <dt>
+            Nhà Sản Xuất:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHASANXUAT.TenNSX)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="XÓA" class="btn btn-default" /> |
+            @Html.ActionLink("VỀ TRANG QUẢN LÝ PHIM", "Index")
+        </div>
+    }
+</div>
+
+
+<p> MÊ PHIM </p>

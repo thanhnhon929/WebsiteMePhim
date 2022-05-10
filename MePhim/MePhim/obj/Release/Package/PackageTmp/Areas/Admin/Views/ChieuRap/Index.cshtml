@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MePhim.Models.CHIEURAP>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center; color:#ffce54">QUẢN LÝ THÔNG PHIM CHIẾU RẠP</h2>
+
+<table class="table" style="color:#ffce54">
+    <tr>
+        <th>
+            Tên Phim Chiếu Rạp
+        </th>
+
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChieuRap)
+            </td>
+            <td style="text-align:right">
+                <a href="@Url.Action("Edit",new { id = item.MaChieuRap})" class=" btn btn-warning" role="button">Sửa</a>
+                <a href="@Url.Action("Details", new{ id = item.MaChieuRap})" class=" btn btn-primary" role="button">Chi tiết</a>
+                <a href="@Url.Action("Delete", new{ id = item.MaChieuRap})" class=" btn btn-danger" role="button">Xóa</a>
+            </td>
+        </tr>
+    }
+
+
+</table>
+

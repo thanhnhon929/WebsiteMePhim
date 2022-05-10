@@ -1,0 +1,35 @@
+﻿@model MePhim.Models.PHIMLE
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center; color:#ffce54">CHI TIẾT PHIM LẺ</h2>
+
+<div style="color: #ffce54">
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Mã Phim Lẻ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaPhimLe)
+        </dd>
+
+        <dt>
+            Tên Phim Lẻ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhimLe)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaPhimLe }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

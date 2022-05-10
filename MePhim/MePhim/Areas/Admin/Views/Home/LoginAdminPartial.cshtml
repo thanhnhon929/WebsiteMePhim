@@ -1,0 +1,20 @@
+﻿@using MePhim.Models
+@{
+    ADMIN ad = (ADMIN)Session["Admin"];
+}
+@if (Session["Admin"] != null)
+{
+    <ul class="nav navbar-nav" style="display:flex">
+        <li ><a href="#" style="width:155px"><span class="glyphicon glyphicon-user"style="color:#fff;font-weight:600;"></span>@ad.TenAdmin</a></li>
+        <li ><a href="@Url.Action("DangXuat", "Home")" style="width:170px"><span class="glyphicon glyphicon-log-out"style="color:#fff;font-weight:600"></span> Đăng xuất</a></li>
+    </ul>
+
+}
+else
+{
+    <ul class="nav navbar-nav" style="display:flex">
+        <li ><a href="@Url.Action("Login", "Home")"><span class="glyphicon glyphicon-log-in"style="color:#fff;font-weight:600"></span> Đăng nhập</a></li>
+
+    </ul>
+
+}

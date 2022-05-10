@@ -1,0 +1,89 @@
+﻿@model MePhim.Models.PHIM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style=" color: #ffce54;">THÊM PHIM</h2>
+
+@using (Html.BeginForm("Create", "QLPhim", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal" style=" color: #ffce54;">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã Phim:</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sMaPhim" style=" color: black;" value="@ViewBag.MaPhim" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên Phim:</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sTenPhim" style=" color: black;" value="@ViewBag.TenPhim" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Mô Tả:</label>
+        <div class="col-md-10">
+            <textarea name="sMoTa">@ViewBag.MoTa</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Ảnh Bìa:</label>
+        <div class="col-md-10">
+            <input type="file" name="fFileUpload" />
+            @ViewBag.ThongBao
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Link Phim:</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sVD" style=" color: black;" value="@ViewBag.VD" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ngày Cập Nhật:</label>
+        <div class="col-md-10" style=" color: black;">
+            <input type="date" name="dNgayCapNhat" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Thể Loại:</label>
+        <div class="col-md-10" style=" color: black;">
+            @Html.DropDownList("MaTheLoai")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Nhà Sản Xuất:</label>
+        <div class="col-md-10" style=" color: black;">
+            @Html.DropDownList("MaNSX")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã Phim Vip:</label>
+        <div class="col-md-10" style=" color: black;">
+            <input type="number" name="PhimVip" min="0" max="1" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Thêm mới" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ PHIM", "Index")
+</div>
+<p>MÊ PHIM</p>

@@ -1,0 +1,106 @@
+﻿@using MePhim.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<MePhim.Models.PHIM>
+
+
+@helper Truncate(string s, int lenght)
+{
+    if (s.Length < lenght)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, lenght)<text>...</text>
+    }
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center; color:#ffce54">QUẢN LÝ THÔNG TIN PHIM</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create","QLPhim")
+</p>
+<table class="table" style="color:#ffce54">
+    <tr>
+        <th style="text-align:center;width:140px;">
+            Tên Phim
+        </th>
+        <th style="text-align:center;width:200px;">
+            Mô Tả
+        </th>
+        <th style="text-align:center;width:80px;">
+            @Html.DisplayNameFor(model => model.First().AnhBia)
+        </th>
+        <th style="text-align:center;width:100px;">
+            Ngày cập nhật
+        </th>
+        <th style="text-align:center;width:100px;">
+            Thể Loại
+        </th>
+        <th style="text-align:center; width:100px">
+            Nhà Sản Xuất
+        </th>
+        <th style="text-align:center"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>    
+                @Truncate(item.TenPhim, 50)
+
+            </td>
+           
+            <td>
+                @Html.Raw(Truncate(item.MoTa, 70).ToString())
+            </td>
+            <td>
+                <img src="~/Images/@item.AnhBia" style="width:50px;" />
+              
+            </td>
+            <td>
+                @Html.FormatValue(@item.NgayCapNhat, "{0:dd/MM/yyyy}")
+              
+            </td>
+  
+            <td>
+                @Html.DisplayFor(modelItem => item.THELOAI.TenTheLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHASANXUAT.TenNSX)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id=item.MaPhim})" class="btn btn-warning" role="button">Sửa</a>
+                <a href="@Url.Action("Details", new { id=item.MaPhim})" class="btn btn-primary" role="button">Chi Tiết</a>
+                <a href="@Url.Action("Delete", new { id=item.MaPhim})" class="btn btn-danger" role="button">Xóa</a>
+               
+            </td>
+        </tr>
+    }
+
+</table>
+
+@*Tạo liên kết phân trang*@
+<div class="Trang">
+Trang@(Model.PageCount<Model.PageNumber?0:
+        Model.PageNumber)/@Model.PageCount
+</div>
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        </div>
+        <style>
+            .MenuTrang {
+                display: inline;
+                text-align: center;
+            }
+            .Trang {
+                color: #ffce54;
+            }
+
+        </style>
+

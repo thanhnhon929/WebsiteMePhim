@@ -1,0 +1,36 @@
+﻿@model MePhim.Models.PHIMHAY
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center;color:#ffce54">CHI TIẾT PHIM HAY</h2>
+
+<div style="color: #ffce54">
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Mã Phim Hay:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaPhimHay)
+        </dd>
+
+        <dt>
+            Tên Phim Hay:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhimHay)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaPhimHay }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<p>MÊ PHIM</p>

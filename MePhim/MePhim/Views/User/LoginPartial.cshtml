@@ -1,0 +1,14 @@
+﻿@using MePhim.Models;
+@{ NGUOIXEM nx = (NGUOIXEM)Session["TaiKhoan"]; }
+
+@if (Session["TaiKhoan"] == null)
+{
+    <li><a href="~/User/DangNhap?id=1"  style="color:#fff;font-weight:600; "><span class="glyphicon glyphicon-log-in" ></span>Đăng nhập</a></li>
+    <li><a href="@Url.Action("DangKy", "User")"  style="color:#fff;font-weight:600;"><span class="glyphicon glyphicon-user"></span>Đăng ký</a></li> }
+else
+{
+    <li><a href="#" style="color:#fff;font-weight:600;margin-right:20px;margin-top:1px"><span class="glyphicon glyphicon-log-in"></span>Xin chào: @nx.HoTen</a></li>
+    <li><a href="@Url.Action("DangXuat", "User")" style="color:#fff;font-weight:600"><span class="glyphicon glyphicon-log-out"></span>Đăng xuất</a></li>
+}
+
+

@@ -1,0 +1,35 @@
+﻿@model MePhim.Models.CHIEURAP
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center;color:#ffce54">CHI TIẾT PHIM CHIẾU RẠP</h2>
+
+<div style="color: #ffce54">
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Mã Phim Chiếu Rạp:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaChieuRap)
+        </dd>
+
+        <dt>
+            Tên Phim Chiếu Rạp:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenChieuRap)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaChieuRap }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<MePhim.Models.PHIMBO>
+<ul class="list-group">
+    <li class="list-group-item active" style="font-weight:bold; text-align:center; background-color:#242526; color:#ffce54; border:1px solid #ffce54">PHIM BỘ</li>
+    @foreach (var item in Model)
+    {
+       <a href="@Url.Action("ChiTietPhim","Phim", new { id= item.MaPhim})"
+          class="list-group-item"style="background-color:#242526; color:#fff ">@item.TenPhimBo</a>
+    }
+</ul>

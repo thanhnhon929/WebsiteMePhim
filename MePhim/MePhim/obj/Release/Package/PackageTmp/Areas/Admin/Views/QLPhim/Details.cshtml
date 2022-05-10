@@ -1,0 +1,74 @@
+﻿@model MePhim.Models.PHIM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+<h2 style="text-align:center;color:#ffce54">CHI TIẾT PHIM</h2>
+
+<div style="color:#ffce54;">
+    <h4>PHIM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Phim:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhim)
+        </dd>
+
+        <dt>
+            Mô Tả:
+        </dt>
+
+        <dd>
+            @Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </dd>
+
+        <dt>
+            Ảnh Bìa:
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Model.AnhBia" alt="@Model.TenPhim">
+        </dd>
+
+        <dt>
+            Ngày Cập Nhật:
+        </dt>
+
+        <dd>
+            @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            Thể Loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THELOAI.TenTheLoai)
+        </dd>
+
+        <dt>
+            Nhà Sản Xuất:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHASANXUAT.TenNSX)
+        </dd>
+
+    </dl>
+</div>
+<p>
+   
+  <a href="@Url.Action( "Edit","QLPhim", new { id = Model.MaPhim })"> Sửa |</a>  
+  <a href="@Url.Action( "Index","QLPhim")">VỀ TRANG QUẢN LÝ PHIM</a>            
+</p>
+<p> MÊ PHIM </p>

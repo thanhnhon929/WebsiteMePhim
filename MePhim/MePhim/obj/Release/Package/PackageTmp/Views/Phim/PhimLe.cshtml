@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "PhimLe";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@using MePhim.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<PHIMLE>
+@{ ViewBag.Title = "TRANG CHỦ";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml"; }
+<style type="text/css">
+    .imgbook {
+        transition: all 1s ease-in;
+        width: 400px;
+    }
+
+        .imgbook:hover {
+            transform: scale(0.9);
+            cursor: pointer;
+        }
+</style>
+
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+    @Html.Action("PhimLePartial", "Phim")
+    <br>
+    @Html.Action("PhimBoPartial", "Phim")
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+    <h2 class="text-center" style="color:#ffce54"> PHIM LẺ </h2>
+    <hr>
+    <div class="row text-center">
+        @foreach (var phimle in Model)
+        {
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6" style="background-color:#242526">
+                <div class="thumbnail" style="background-color:#242526">
+                    <img src="~/Images/@phimle.AnhBia" alt="@phimle.TenPhimLe" class="img-responsive img-rounded imgbook">
+                    <div class="caption">
+                        <h4 style=" min-height :70px;">
+                            <a href="@Url.Action("ChiTietPhim", "Phim", new {id = phimle.MaPhim})">@phimle.TenPhimLe</a>
+                        </h4>
+
+
+                        <p style="text-align:center">
+                            <a href="@Url.Action("XemNgay","Xem", new { id= phimle.MaPhim})" class="btn btn-danger" role="button">
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Xem Ngay
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @*Tao lien ket cac trang*@
+    <div class="Trang">
+        Trang@(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+    </div>
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, Page => Url.Action("PhimLe", new { Page = Page }))
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    @Html.Action("PhimCRPartial", "Phim")
+    <br>
+    @Html.Action("TopPhimPartial", "Phim")
+</div>
+
+
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+
+    .Trang {
+        color: #ffce54;
+    }
+</style>
+

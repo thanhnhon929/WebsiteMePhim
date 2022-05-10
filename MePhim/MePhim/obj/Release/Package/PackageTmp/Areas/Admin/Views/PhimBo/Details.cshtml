@@ -1,0 +1,35 @@
+﻿@model MePhim.Models.PHIMBO
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center;color:#ffce54">CHI TIẾT PHIM BỘ</h2>
+
+<div style="color: #ffce54">
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Mã Phim Bộ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaPhimBo)
+        </dd>
+
+        <dt>
+            Tên Phim Bộ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhimBo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaPhimBo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

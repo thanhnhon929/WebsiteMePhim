@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MePhim.Models.PHIM>
+@{
+    ViewBag.Title = "ChiTietPhim";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style>
+
+    .thumbnail > p.ngaycapnhat {
+        margin-right: 120px;
+        font-weight: bold;
+        text-align: right;
+        color: #fff;
+    }
+
+
+
+
+    .thumbnail > p > a.btn-primary {
+        margin-left: 65%;
+    }
+
+    .thumbnail > h4.tenphim {
+        color: aliceblue;
+        background-color: #242526;
+    }
+</style>
+
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+    @Html.Action("PhimLePartial", "Phim")
+    <br>
+    @Html.Action("PhimBoPartial", "Phim")
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="row text-left" style="background-color:black">
+        <div class=" col-sm-12 col-lg-12 col-md-12 col-xs-12">
+            <div class="thumbnail" style="background-color:#242526">
+                @foreach (var item in Model)
+                {
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <img src="~/Images/@item.AnhBia" alt="@item.TenPhim" style="max-width:250px; height:auto" />
+                            <p style="text-align:center; position:absolute; bottom:0; left:0; transform:translate(75%,10px)">
+                                <a href="@Url.Action("XemNgay","Xem", new { id= item.MaPhim})" class="btn btn-danger" role="button">
+                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Xem Ngay
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <h3 class="tenphim" style="color:#ffce54">
+                                @item.TenPhim
+                            </h3>
+                            <div class="mottaphim">
+                                <p style="color:#fff !important">
+                                    @Html.Raw(item.MoTa.ToString().Replace("\n", "<br>"))
+                                </p>
+                            </div>
+                            <p class="ngaycapnhat" style="text-align:left; margin-right:-1px; color:#fff">Ngày cập nhật: @Html.FormatValue(item.NgayCapNhat, "{0:MM/dd/yyyy}")</p>
+                            <p style="color:#fff"> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Lượt xem: @item.LuotXem</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    @Html.Action("PhimCRPartial", "Phim")
+    <br>
+    @Html.Action("TopPhimPartial", "Phim")
+</div>
+

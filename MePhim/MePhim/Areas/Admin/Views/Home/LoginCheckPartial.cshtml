@@ -1,0 +1,22 @@
+﻿
+@using MePhim.Models;
+@{
+    ADMIN ad = (ADMIN)Session["Admin"];
+}
+@if (Session["Admin"] != null)
+{
+    <li class="active"><a href="@Url.Action("Index", "QLPhim")" style="color:#fff;font-weight:600">QUẢN LÝ PHIM</a> </li>
+    <li><a href="@Url.Action("Index", "PhimHay")"style="color:#fff;font-weight:600">QUẢN LÝ PHIM HAY</a> </li>
+    <li><a href="@Url.Action("Index", "PhimBo")"style="color:#fff;font-weight:600">QUẢN LÝ PHIM BỘ </a> </li>
+    <li><a href="@Url.Action("Index", "PhimLe")"style="color:#fff;font-weight:600">QUẢN LÝ PHIM LẺ </a> </li>
+    <li><a href="@Url.Action("Index", "ChieuRap")"style="color:#fff;font-weight:600">QUẢN LÝ PHIM CHIẾU RẠP</a> </li>
+}
+else
+{
+    <li class="active"><a href="#"style="color:#fff;font-weight:600">QUẢN LÝ PHIM</a> </li>
+    <li><a href="#"style="color:#fff;font-weight:600">QUẢN LÝ PHIM HAY</a> </li>
+    <li><a href="#"style="color:#fff;font-weight:600">QUẢN LÝ PHIM BỘ </a> </li>
+    <li><a href="#"style="color:#fff;font-weight:600">QUẢN LÝ PHIM LẺ </a> </li>
+    <li><a href="#"style="color:#fff;font-weight:600">QUẢN LÝ PHIM CHIẾU RẠP</a> </li>
+
+}

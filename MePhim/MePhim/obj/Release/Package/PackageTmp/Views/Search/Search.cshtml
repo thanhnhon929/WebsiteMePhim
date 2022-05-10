@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MePhim.Models.PHIM>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+
+    @Html.Action("PhimLePartial", "Phim")
+    <br>
+    @Html.Action("PhimBoPartial", "Phim")
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <h2 style="text-align:center; color:#ffce54">Kết quả tìm kiếm cho: @ViewBag.Search</h2>
+
+    <div class="row text-center">
+        @foreach (var phim in Model)
+        {
+            <div class="col-lg-4 col-md-4">
+                <div class="thumbnail" style="background-color:#242526">
+                    <img src="~/Images/@phim.AnhBia" alt="Thumbnail Image 1" class="img-responsive img-rounded imgbook" style=" width :400px;">
+
+                    <div class="caption">
+                        <h4 style=" min-height :70px;">
+                            <a href="@Url.Action("ChiTietPhim", "Phim", new {id =phim.MaPhim})">@phim.TenPhim</a>
+                        </h4>
+                        <p style="color:#fff"> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Lượt xem: @phim.LuotXem</p>
+                        <p>
+                            <a href="@Url.Action("XemNgay","Xem", new { id= phim.MaPhim })" class="btn btn-danger" role="button">
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Xem Ngay
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+    @Html.Action("PhimCRPartial", "Phim")
+    <br>
+    @Html.Action("TopPhimPartial", "Phim")
+</div>
